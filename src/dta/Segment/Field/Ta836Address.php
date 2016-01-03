@@ -5,7 +5,7 @@ namespace icechair\dta\Segment\Field;
 
 use icechair\dta\Segment\Field;
 
-final class Ta836Contractee extends Field{
+final class Ta836Address extends Field{
 
     /**
      * @var string
