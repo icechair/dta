@@ -1,11 +1,12 @@
 <?php
 
-namespace icechair\dta;
+namespace icechair\dta\Segment\Field;
+use icechair\dta\Segment\Field;
 
-
-class Header implements DtaString{
+final class Header extends Field{
+    // nur IBAN Zahlungen
     const ALLOWED_TRANSACTIONS = [
-        826,827,830,832,836,837,890
+        836,837,890
     ];
     /**
      * @var \DateTime|null $date_process;
@@ -122,14 +123,16 @@ class Header implements DtaString{
      * @param int $transaction_id
      * @param int $payment_type
      */
-    public function __construct( $date_process, $bc_beneficiary, \DateTime $date_created, $bc_contractee, $dta_id, $input_id, $transaction_id, $payment_type) {
-        if($date_process instanceof \DateTime){
-            $this->date_process = $date_process;
-        }
-        $this->bc_beneficiary = $bc_beneficiary;
+    public function __construct(\DateTime $date_created, $bc_contractee, $dta_id, $input_id, $transaction_id, $payment_type) {
+        $this->length = 51;
+        $this->date_process = null;
+        $this->bc_beneficiary = "";
         $this->output_id = "00000";
         $this->date_created = $date_created;
         $this->bc_contractee = $bc_contractee;
+        if(strlen($dta_id) != 5){
+            throw new \InvalidArgumentException("dta_id must be of length 5");
+        }
         $this->dta_id = $dta_id;
         $this->input_id = $input_id;
         if(!in_array($transaction_id, Header::ALLOWED_TRANSACTIONS)) {
@@ -140,7 +143,7 @@ class Header implements DtaString{
         $this->edit_flag = 0;
     }
 
-    public function toDtaString() {
+    final public function StringValue() {
         $output = "";
         if(in_array($this->transaction_id, [826,827])){
             if($this->date_process === null){
@@ -152,7 +155,7 @@ class Header implements DtaString{
         }
 
         if(strlen($this->bc_beneficiary) > 12){
-            throw new \Exception("bc_beneficiary length must be equal or less than 12");
+            throw new \Exception("bc_beneficiary max length is 12");
         }
         $output .= str_pad($this->bc_beneficiary,12);
 
@@ -160,13 +163,10 @@ class Header implements DtaString{
         $output .= $this->date_created->format("ymd");
 
         if(strlen($this->bc_contractee) > 7){
-            throw new \Exception("bc_contractee length must be equal or less than 7");
+            throw new \Exception("bc_contractee max length is 7");
         }
         $output .= str_pad($this->bc_contractee,7);
 
-        if(strlen($this->dta_id) != 5){
-            throw new \Exception("dta_id must be length 5");
-        }
         $output .= $this->dta_id;
 
         $output .= str_pad($this->input_id, 5, '0', STR_PAD_LEFT);
@@ -184,6 +184,6 @@ class Header implements DtaString{
     }
 
     public function referenceNumber(){
-        return $this->dta_id . str_pad($this->input_id, 11, STR_PAD_LEFT);
+        return $this->dta_id . str_pad($this->input_id, 11,'0', STR_PAD_LEFT);
     }
 }
