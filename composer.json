@@ -1,0 +1,17 @@
+{
+  "name": "icechair/dta",
+  "description": "DTA File exporter",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Martin Gabel",
+      "email": "martin.gabel@icechair.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "icechair\\": "src/"
+    }
+  }
+}
