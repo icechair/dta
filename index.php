@@ -20,6 +20,14 @@ $record = new \icechair\dta\Record\Ta836(
             'EUR',
             400.83
         )
+    ),
+    new \icechair\dta\Segment\Contractee(
+        new \icechair\dta\Segment\Field\Conversion(1.443),
+        new \icechair\dta\Segment\Field\Ta836Contractee(
+            "Martin Gäbel",
+            "Westerwaldstraße 57",
+            "65549 Limburg an der Lahn"
+        )
     )
 );
 
