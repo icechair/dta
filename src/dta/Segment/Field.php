@@ -24,7 +24,7 @@ abstract class Field {
 
     final public function toString(){
         if(!$this->is_optional){
-            if(empty($this->StringValue())){
+            if(($this->StringValue() === '')){
                 throw new \Exception(sprintf("%s is mandatory", get_class($this)));
             }
         }

@@ -39,7 +39,15 @@ $record = new \icechair\dta\Record\Ta836(
             "MusterStraße 123",
             "35794 Waldernbach"
         )
+    ),
+    new \icechair\dta\Segment\PaymentReference(
+        new \icechair\dta\Segment\Field\PaymentReference(
+            "U",
+            "FreitextFeld"
+        ),
+        new \icechair\dta\Segment\Field\Expenses(0)
     )
 );
 
 echo $record->toString();
+echo $record->Amount().PHP_EOL;

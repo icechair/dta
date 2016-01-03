@@ -8,15 +8,23 @@ use icechair\dta\Segment\AccountBeneficiary;
 use icechair\dta\Segment\Beneficiary;
 use icechair\dta\Segment\Contractee;
 use icechair\dta\Segment\Header;
+use icechair\dta\Segment\PaymentReference;
 
 final class Ta836 extends Record{
-    public function __construct(Header $header, Contractee $contractee, AccountBeneficiary $accountBeneficiary, Beneficiary $beneficiary) {
-
+    private $header;
+    public function __construct(Header $header, Contractee $contractee, AccountBeneficiary $accountBeneficiary, Beneficiary $beneficiary, PaymentReference $paymentReference) {
+        $this->header = $header;
         $this->segments = [
             $header,
             $contractee,
             $accountBeneficiary,
-            $beneficiary
+            $beneficiary,
+            $paymentReference
         ];
+    }
+
+
+    public function Amount() {
+        return $this->header->Amount();
     }
 }

@@ -21,4 +21,9 @@ abstract class Record {
 
         return $output;
     }
+
+    /**
+     * @return float
+     */
+    abstract public function Amount();
 }
