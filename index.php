@@ -28,6 +28,10 @@ $record = new \icechair\dta\Record\Ta836(
             "Westerwaldstraße 57",
             "65549 Limburg an der Lahn"
         )
+    ),
+    new \icechair\dta\Segment\AccountBeneficiary(
+        new \icechair\dta\Segment\Field\BIC("BYLADEM1001"),
+        new \icechair\dta\Segment\Field\IBAN("DE74120300001031277872")
     )
 );
 
