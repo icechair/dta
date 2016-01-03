@@ -25,7 +25,7 @@ abstract class Segment{
         foreach($this->fields as $field){
             $output .= $field->toString();
         }
-        var_dump($output);
+        //var_dump($output);
         if(strlen($output) !== 128){
             throw new \Exception(sprintf("%s segment length is not 128",get_class($this)));
         }

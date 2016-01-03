@@ -1,17 +1,16 @@
 <?php
 require_once "vendor/autoload.php";
 
-
+$dta_id = 'JF001';
+$index = 1;
+$now = new DateTime();
 $record = new \icechair\dta\Record\Ta836(
-    new \icechair\dta\Segment\Header(
-        new \icechair\dta\Segment\Field\Header(
-            new DateTime(),
-            '790',
-            'JF001',
-            1,
-            836,
-            0
-        ),
+    new \icechair\dta\Segment\Ta836Header(
+        $now,
+        '790',
+        $dta_id,
+        $index,
+        0,
         new \icechair\dta\Segment\Field\Account(
             'DE74120300001031277872'
         ),
@@ -48,6 +47,16 @@ $record = new \icechair\dta\Record\Ta836(
         new \icechair\dta\Segment\Field\Expenses(0)
     )
 );
+++$index;
+
+$total = new \icechair\dta\Record\Ta890(
+    new \icechair\dta\Segment\Ta890Header(
+        $now,
+        $dta_id,
+        $index,
+        new \icechair\dta\Segment\Field\TotalAmount($record->Amount())
+    )
+);
 
 echo $record->toString();
-echo $record->Amount().PHP_EOL;
+echo $total->toString();

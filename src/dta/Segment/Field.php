@@ -28,10 +28,10 @@ abstract class Field {
                 throw new \Exception(sprintf("%s is mandatory", get_class($this)));
             }
         }
-        var_dump(get_class($this));
+        //var_dump(get_class($this));
 
         $out = str_pad($this->StringValue(),$this->length);
-        var_dump($out);
+        //var_dump($out);
         return $out;
     }
 }
