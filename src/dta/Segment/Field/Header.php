@@ -6,7 +6,7 @@ use icechair\dta\Segment\Field;
 final class Header extends Field{
     // nur IBAN Zahlungen
     const ALLOWED_TRANSACTIONS = [
-        836,837,890
+        836,890
     ];
     /**
      * @var \DateTime|null $date_process;
