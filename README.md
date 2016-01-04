@@ -11,7 +11,7 @@ $transactions =[
         'currency' => 'EUR', //ISO Waehrungskuerzel
         'amount' => 100.56, //zu ueberweisende Summe,
         'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
-        'name' => 'Johnson Stiftung', //Name Auftraggeber
+        'name' => 'Max Mustermann', //Name Auftraggeber
         'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
         'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
         'bic' => 'HELADEXXXXX', //BIC Empfaenger,
@@ -26,15 +26,18 @@ $transactions =[
 ];
 $dta_id = 'JF001'; //5-stellige Identifikationsnummer, vom auftraggeber gewaehlt
 $created = new DateTime();
-$export = new \icechair\dta\Export($dta_id, $transactions, $created);
-
-$dta_string = $export->DtaString();
+try{
+    $export = new \icechair\dta\Export($dta_id, $transactions, $created);
+    $dta_string = $export->DtaString();
+}catch(Exception $e){
+    ...
+}
 ```
 
 Ausgabe:
 ```
 01000000            00000160104790    JF0010000183600JF00100000000001DE74123456789012345678  160104EUR100,56                    
-02            Johnson Stiftung                   Musterstrasse 123                  DE-11223 Musterort                          
+02            Max Mustermann                     Musterstrasse 123                  DE-11223 Musterort                          
 03AHELADEXXXXX                                                           CH33123456789012345678                                 
 04Michaela Musterfrau                Woauchimmer 51                     CH-1000 Ortschaft                                       
 05Uweil ichs kann                                                                                           0                   
