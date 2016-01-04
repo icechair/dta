@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "icechair\\": "src/"
+      "icechair\\": "icechair/"
     }
   },
   "repositories": [
@@ -19,5 +19,5 @@
         "type": "vcs",
         "url": "https://github.com/icechair/dta"
     }
-  ],
+  ]
 }
