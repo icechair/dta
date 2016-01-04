@@ -4,59 +4,49 @@ require_once "vendor/autoload.php";
 $dta_id = 'JF001';
 $index = 1;
 $now = new DateTime();
-$record = new \icechair\dta\Record\Ta836(
-    new \icechair\dta\Segment\Ta836Header(
-        $now,
-        '790',
-        $dta_id,
-        $index,
-        0,
-        new \icechair\dta\Segment\Field\Account(
-            'DE74120300001031277872'
-        ),
-        new \icechair\dta\Segment\Field\Amount(
-            new DateTime(),
-            'EUR',
-            400.83
-        )
-    ),
-    new \icechair\dta\Segment\Contractee(
-        new \icechair\dta\Segment\Field\Conversion(1.443),
-        new \icechair\dta\Segment\Field\Ta836Address(
-            "Martin Gäbel",
-            "Westerwaldstraße 57",
-            "65549 Limburg an der Lahn"
-        )
-    ),
-    new \icechair\dta\Segment\AccountBeneficiary(
-        new \icechair\dta\Segment\Field\BIC("BYLADEM1001"),
-        new \icechair\dta\Segment\Field\IBAN("DE74120300001031277872")
-    ),
-    new \icechair\dta\Segment\Beneficiary(
-        new \icechair\dta\Segment\Field\Ta836Address(
-            "Dusti Jeuckü",
-            "MusterStraße 123",
-            "35794 Waldernbach"
-        )
-    ),
-    new \icechair\dta\Segment\PaymentReference(
-        new \icechair\dta\Segment\Field\PaymentReference(
-            "U",
-            "FreitextFeld"
-        ),
-        new \icechair\dta\Segment\Field\Expenses(0)
-    )
-);
-++$index;
 
-$total = new \icechair\dta\Record\Ta890(
-    new \icechair\dta\Segment\Ta890Header(
-        $now,
-        $dta_id,
-        $index,
-        new \icechair\dta\Segment\Field\TotalAmount($record->Amount())
-    )
-);
+$transactions = [
+    [
+        'bc_contractee' => '790', //Bankenclearing Nummer Auftraggeber
+        'payment_type' => '0', //1 -> Salär- und Rentenzahlung, 0 -> alles andere
+        'account' => 'DE74123456789012345678', // iban oder 16stellige Kontonummer, Paddingformat abhängig von der bank
+        'valuta' => new DateTime(), //Datum Zahlungsauftrag,
+        'currency' => 'EUR', //ISO Waehrungskuerzel
+        'amount' => 100.56, //zu ueberweisende Summe,
+        'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
+        'name' => 'Johnson Stiftung', //Name Auftraggeber
+        'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
+        'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
+        'bic' => 'HELADEXXXXX', //BIC Empfaenger,
+        'iban' => 'CH33123456789012345678', //IBAN Empfaenger
+        'receiver_name' => 'Michaela Musterfrau', //Name Empfaenger
+        'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
+        'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
+        'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
+        'reference' => 'weil ichs kann', //Zahlungsgrund
+        'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
+    ],
+    [
+        'bc_contractee' => '790', //Bankenclearing Nummer Auftraggeber
+        'payment_type' => '1', //1 -> Salär- und Rentenzahlung, 0 -> alles andere
+        'account' => 'DE74123456789012345678', // iban oder 16stellige Kontonummer, Paddingformat abhängig von der bank
+        'valuta' => new DateTime(), //Datum Zahlungsauftrag,
+        'currency' => 'EUR', //ISO Waehrungskuerzel
+        'amount' => 200.56, //zu ueberweisende Summe,
+        'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
+        'name' => 'Johnson Stiftung', //Name Auftraggeber
+        'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
+        'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
+        'bic' => 'HELADEXXXXX', //BIC Empfaenger,
+        'iban' => 'CH33123456789012345678', //IBAN Empfaenger
+        'receiver_name' => 'Michaela Musterfrau', //Name Empfaenger
+        'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
+        'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
+        'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
+        'reference' => 'weil ichs kann', //Zahlungsgrund
+        'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
+    ]
+];
+$export = new \icechair\dta\Export($dta_id, $transactions, $now);
 
-echo $record->toString();
-echo $total->toString();
+echo $export->DtaString();
