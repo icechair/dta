@@ -34,7 +34,7 @@ $dta_string = $export->DtaString();
 Ausgabe:
 ```
 01000000            00000160104790    JF0010000183600JF00100000000001DE74123456789012345678  160104EUR100,56                    
-02            Johnson Stiftung                   Musterstrasse 123                  DE-11223 Musterort                          
+02            Max Mustermann                     Musterstrasse 123                  DE-11223 Musterort                          
 03AHELADEXXXXX                                                           CH33123456789012345678                                 
 04Michaela Musterfrau                Woauchimmer 51                     CH-1000 Ortschaft                                       
 05Uweil ichs kann                                                                                           0                   
