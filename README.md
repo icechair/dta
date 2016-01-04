@@ -26,9 +26,12 @@ $transactions =[
 ];
 $dta_id = 'JF001'; //5-stellige Identifikationsnummer, vom auftraggeber gewaehlt
 $created = new DateTime();
-$export = new \icechair\dta\Export($dta_id, $transactions, $created);
-
-$dta_string = $export->DtaString();
+try{
+    $export = new \icechair\dta\Export($dta_id, $transactions, $created);
+    $dta_string = $export->DtaString();
+}catch(Exception $e){
+    ...
+}
 ```
 
 Ausgabe:
