@@ -55,8 +55,8 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
             ]
         ];
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
-        $expected = file_get_contents(dirname(__FILE__).'/../data/export-ch-iban.txt');
-        $this->assertEquals($export->DtaString(), $expected);
+        $expected = (dirname(__FILE__).'/../data/export-ch-iban.txt');
+        $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 
     public function testForeignIBAN(){
@@ -110,7 +110,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
             ]
         ];
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
-        $expected = file_get_contents(dirname(__FILE__).'/../data/export-de-iban.txt');
-        $this->assertEquals($export->DtaString(), $expected);
+        $expected = (dirname(__FILE__).'/../data/export-de-iban.txt');
+        $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 }
