@@ -11,4 +11,4 @@ before_install:
     docker pull phpunit/phpunit
 before_script:
     composer install
-script: docker run -v $(pwd):/app phpunit/phpunit --bootstrap vendor/autoload.php --coverage-text
+script: docker run -v $(pwd):/app phpunit/phpunit --bootstrap vendor/autoload.php --coverage-text --configuration phpunit.xml
