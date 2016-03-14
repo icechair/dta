@@ -111,6 +111,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
         ];
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
         $expected = (dirname(__FILE__).'/../data/export-de-iban.txt');
+        var_dump($expected);
         $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 }
