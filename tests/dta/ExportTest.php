@@ -21,7 +21,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'currency' => 'EUR', //ISO Waehrungskuerzel
                 'amount' => 100.56, //zu ueberweisende Summe,
                 'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
-                'name' => 'Johnson Stiftung', //Name Auftraggeber
+                'name' => 'Sender Kontoname', //Name Auftraggeber
                 'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
                 'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
                 'bic' => 'HELADEXXXXX', //BIC Empfaenger,
@@ -41,7 +41,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'currency' => 'EUR', //ISO Waehrungskuerzel
                 'amount' => 200.56, //zu ueberweisende Summe,
                 'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
-                'name' => 'Johnson Stiftung', //Name Auftraggeber
+                'name' => 'Sender Kontoname', //Name Auftraggeber
                 'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
                 'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
                 'bic' => 'HELADEXXXXX', //BIC Empfaenger,
@@ -77,7 +77,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'currency' => 'EUR', //ISO Waehrungskuerzel
                 'amount' => 100.56, //zu ueberweisende Summe,
                 'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
-                'name' => 'Johnson Stiftung', //Name Auftraggeber
+                'name' => 'Sender Kontoname', //Name Auftraggeber
                 'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
                 'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
                 'bic' => 'HELADEXXXXX', //BIC Empfaenger,
@@ -97,7 +97,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'currency' => 'EUR', //ISO Waehrungskuerzel
                 'amount' => 200.56, //zu ueberweisende Summe,
                 'currency_conversion' => null, //Wechselkurs, falls mit bank Devisenkurse vereinbart wurden
-                'name' => 'Johnson Stiftung', //Name Auftraggeber
+                'name' => 'Sender Kontoname', //Name Auftraggeber
                 'street' => 'Musterstraße 123', //Strasse/nr Auftraggeber
                 'city' => 'DE-11223 Musterort', //PLZ/Ort Auftraggeber
                 'bic' => 'HELADEXXXXX', //BIC Empfaenger,
