@@ -57,6 +57,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
         $expected = (dirname(__FILE__).'/../data/export-ch-iban.txt');
         //$expected = file_get_contents($expected);
+        var_dump(strlen(file_get_contents($expected)));
         $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 
@@ -113,6 +114,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
         $expected = (dirname(__FILE__).'/../data/export-de-iban.txt');
 //        $expected = (file_get_contents($expected));
+        var_dump(strlen(file_get_contents($expected)));
         $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 }
