@@ -30,7 +30,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
                 'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
                 'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
-                'reference' => 'weil ichs kann', //Zahlungsgrund
+                'reference' => 'Zahlungsgrund ', //Zahlungsgrund
                 'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
             ],
             [
@@ -50,14 +50,13 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
                 'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
                 'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
-                'reference' => 'weil ichs kann', //Zahlungsgrund
+                'reference' => 'Zahlungsgrund ', //Zahlungsgrund
                 'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
             ]
         ];
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
         $expected = (dirname(__FILE__).'/../data/export-ch-iban.txt');
         //$expected = file_get_contents($expected);
-        var_dump(strlen(file_get_contents($expected)));
         $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 
@@ -87,7 +86,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
                 'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
                 'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
-                'reference' => 'weil ichs kann', //Zahlungsgrund
+                'reference' => 'Zahlungsgrund ', //Zahlungsgrund
                 'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
             ],
             [
@@ -107,14 +106,13 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
                 'receiver_street' => 'Woauchimmer 51', //Strasse,Nummer Empfaenger,
                 'receiver_city' => 'CH-1000 Ortschaft', //PLZ Ort Empfaenger,
                 'reference_id' => 'U', //Zahlungsgrund I -> Strukturierte Referenznummer 20stellig fix, U -> freitext
-                'reference' => 'weil ichs kann', //Zahlungsgrund
+                'reference' => 'Zahlungsgrund ', //Zahlungsgrund
                 'expenses' => 0, //Spesenregelung 0 -> alles Auftraggeber, 1 alles Empfaenger, 2, Beide geteilt
             ]
         ];
         $export = new \icechair\dta\Export($dta_id, $transactions, $now);
         $expected = (dirname(__FILE__).'/../data/export-de-iban.txt');
 //        $expected = (file_get_contents($expected));
-        var_dump(strlen(file_get_contents($expected)));
         $this->assertStringEqualsFile($expected,$export->DtaString());
     }
 }
