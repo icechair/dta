@@ -10,7 +10,7 @@ php:
 #before_install:
 #    docker pull phpunit/phpunit
 before_script:
-    composer install
-    php -i
+    - composer install
+    - php -i
 #script: docker run -v $(pwd):/app phpunit/phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml
 script: phpunit --bootstrap vendor/autoload.php
