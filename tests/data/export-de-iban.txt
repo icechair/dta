@@ -2,10 +2,10 @@
 02            Sender Kontoname                   Musterstrasse 123                  DE-11223 Musterort                          
 03D                                                                      CH33123456789012345678                                 
 04Michaela Musterfrau                Woauchimmer 51                     CH-1000 Ortschaft                                       
-05UZahlungsgrund                                                                                            0                   
+05UZahlungsgrund                                                                                            2                   
 01000000            00000150101790    JF0010000283610JF00100000000002DE74123456789012345678  150201EUR200,56                    
 02            Sender Kontoname                   Musterstrasse 123                  DE-11223 Musterort                          
 03AHELADEXXXXX                                                           DE33123456789012345678                                 
 04Michaela Musterfrau                Woauchimmer 51                     CH-1000 Ortschaft                                       
-05UZahlungsgrund                                                                                            0                   
+05UZahlungsgrund                                                                                            2                   
 01000000            00000150101       JF0010000389000301,120                                                                    
