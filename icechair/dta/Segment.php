@@ -27,7 +27,13 @@ abstract class Segment{
         }
         //var_dump($output);
         if(strlen($output) !== 128){
-            throw new \Exception(sprintf("%s segment length is not 128",get_class($this)));
+            throw new \LengthException(
+                sprintf(
+                    "%s segment length is not 128, actual(%s)",
+                    get_class($this),
+                    strlen($output)
+                )
+            );
         }
         return $output . "\r\n";
     }

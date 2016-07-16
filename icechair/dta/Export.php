@@ -15,6 +15,7 @@ use icechair\dta\Segment\Field\Conversion;
 use icechair\dta\Segment\Field\Expenses;
 use icechair\dta\Segment\Field\IBAN;
 use icechair\dta\Segment\Field\Ta836Address;
+use icechair\dta\Segment\Field\Ta836BeneficiaryAddress;
 use icechair\dta\Segment\Field\TotalAmount;
 use icechair\dta\Segment\PaymentReference;
 use icechair\dta\Segment\Ta836Header;
@@ -65,7 +66,7 @@ final class Export {
                     new IBAN($transaction['iban'])
                 ),
                 new Beneficiary(
-                    new Ta836Address(
+                    new Ta836BeneficiaryAddress(
                         $transaction['receiver_name'],
                         $transaction['receiver_street'],
                         $transaction['receiver_city']

@@ -118,6 +118,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase {
 
     public function testLongName(){
 
+        $this->expectException(\LengthException::class);
 
         $dta_id = 'JF001';
         $index = 1;
