@@ -12,7 +12,7 @@ final class Expenses extends Field{
         if(!in_array($value, [0,1,2])){
             throw new \InvalidArgumentException("Expense is invalid");
         }
-        $this->value = $value;
+        $this->value = '2';
     }
 
     public function StringValue() {
