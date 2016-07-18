@@ -29,7 +29,7 @@ final class Ta836BeneficiaryAddress extends Field{
      * @param string $city
      */
     public function __construct($name, $street, $city) {
-        $this->length = 3 * 24;
+        $this->length = 3 * 35;
         $this->name = iconv("UTF-8", "ASCII//TRANSLIT", $name);
         $this->street = iconv("UTF-8", "ASCII//TRANSLIT",$street);
         $this->city = iconv("UTF-8", "ASCII//TRANSLIT", $city);
@@ -46,7 +46,7 @@ final class Ta836BeneficiaryAddress extends Field{
                 )
             );
         }else{
-            $line .= str_pad($this->name, 24);
+            $line .= str_pad($this->name, 35);
         }
 
         if(strlen($this->street) > 24){
@@ -58,7 +58,7 @@ final class Ta836BeneficiaryAddress extends Field{
                 )
             );
         }else{
-            $line .= str_pad($this->street, 24);
+            $line .= str_pad($this->street, 35);
         }
 
         if(strlen($this->city) > 24){
@@ -70,7 +70,7 @@ final class Ta836BeneficiaryAddress extends Field{
                 )
             );
         }else{
-            $line .= str_pad($this->city, 24);
+            $line .= str_pad($this->city, 35);
         }
         return $line;
     }

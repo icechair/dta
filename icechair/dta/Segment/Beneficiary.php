@@ -13,7 +13,7 @@ final class Beneficiary extends Segment{
         $this->segment_prefix = "04";
         $this->fields = [
             $address,
-            new Segment\Field\Reserve(54)
+            new Segment\Field\Reserve(21)
         ];
     }
 
