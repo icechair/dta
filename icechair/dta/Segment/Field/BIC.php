@@ -11,6 +11,15 @@ final class BIC extends Field{
     private $bic;
     public function __construct($bic) {
         $this->length = 2 * 35;
+        if(strlen($bic) > 35) {
+            throw new \LengthException(
+                sprintf(
+                    '%s: bic length > %d',
+                    get_class($this),
+                    35
+                )
+            );
+        }
         $this->bic = $bic;
     }
 

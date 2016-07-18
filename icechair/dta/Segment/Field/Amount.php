@@ -32,9 +32,19 @@ final class Amount extends Field{
     }
 
     public function StringValue() {
-        return $this->valuta->format("ymd")
+        $string = $this->valuta->format("ymd")
             . $this->currency
             . number_format($this->amount,2, ',','');
+        if(strlen($string) > $this->length) {
+            throw new \LengthException(
+                sprintf(
+                    '%s: valuta +currency + amount length > %d',
+                    get_class($this),
+                    $this->length
+                )
+            );
+        }
+        return $string;
     }
 
     public function Amount(){

@@ -17,6 +17,6 @@ final class IBAN extends Field{
     }
 
     public function StringValue() {
-        return $this->iban;
+        return str_pad($this->iban, $this->length);
     }
 }
